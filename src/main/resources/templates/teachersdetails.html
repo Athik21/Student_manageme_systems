@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th= "http://www.thymeLeaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<title>Student Management System</title>
+<style>
+	.grids {
+		display: grid;
+		align-content: centre;
+		margin-top: 10%;
+	}
+ .gradient-custom {
+    /* fallback for old browsers */
+    background: #30cfd0;
+  
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(48,207,208,0.5), rgba(51,8,103,0.5));
+  
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(48,207,208,0.5), rgba(51,8,103,0.5))
+  }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body class="gradient-custom">
+<nav  class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
+  <div  class="container">
+    <a class="navbar-brand" href="#">Student Management Systems</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+    </div>
+  </div>
+</nav>
+	<div class="container">
+		<div class="card">
+			<div class="card">
+				<h3 class="text-center">Teacher's Detail</h3>
+				<div style="margin:auto;"><img th:each="teacher :${teacher}" alt="" th:src="*{'data:image/jpeg;base64,'+{teacher.image}}" class="rounded-circle" style="width: 100px;height: 100px;">
+				</div><br>
+				<div th:object = "${teacher}">
+					<table class="table ">
+			<thead class="table-white">
+				<tr>
+					<td>Teacher ID</td>
+					<td th:text = "${teacher.tecid}"></td>
+				</tr>
+				<tr>
+					<td>Name</td>
+					<td th:text = "${teacher.name}"></td>
+				</tr>
+				<tr>
+					<td>Designation</td>
+					<td th:text = "${teacher.disignation}"></td>
+				</tr>
+				<tr>
+					<td>Teacher Email</td>
+					<td th:text = "${teacher.email}"></td>
+				</tr>
+				<tr>
+					<td>Date of Birth</td>
+					<td th:text = "${teacher.dob}"></td>
+				</tr>
+				<tr th:if="${teacher.sub11!=null}">
+					<td>Subjects Handled for second year</td>
+					<td th:if="${teacher.sub11!=' '}"  th:text = "${teacher.sub1}+' & '+${teacher.sub11}"></td>
+					<td th:if="${teacher.sub11==' '}"  th:text = "${teacher.sub1}"></td>
+				</tr>
+				<tr th:if="${teacher.sub22!=null}">
+					<td>Subjects Handled for third year</td>
+					<td th:if="${teacher.sub22!=' '}"  th:text = "${teacher.sub2}+' & '+${teacher.sub22}"></td>
+					<td th:if="${teacher.sub22==' '}"  th:text = "${teacher.sub2}"></td>
+				</tr>
+				<tr th:if="${teacher.sub33!=null}">
+					<td>Subjects Handled for final year</td>
+					<td th:if="${teacher.sub33==' '}"  th:text = "${teacher.sub3}"></td>
+					<td th:if="${teacher.sub33!=' '}"  th:text = "${teacher.sub3}+' & '+${teacher.sub33}"></td>
+				</tr>
+				<tr>
+					<td>Phone</td>
+					<td th:text = "${teacher.phone}"></td>
+				</tr>
+				<tr>
+					<td>Experience</td>
+					<td th:text = "${teacher.experience}"></td>
+				</tr>
+				<tr>
+					<td>Additional Roll</td>
+					<td th:text = "${teacher.roll}"></td>
+				</tr>
+			</thead>
+		</table>	
+		</div>
+		</div>
+		</div>
+	</div><br>
+</body>
+</html>

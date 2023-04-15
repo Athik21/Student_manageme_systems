@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html  xmlns:th= "http://www.thymeLeaf.org">
+<head>
+<meta charset="ISO-8859-1">
+
+<title>Student Management System</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+</head>
+<style>
+
+ .gradient-custom {
+    /* fallback for old browsers */
+    background: #30cfd0;
+  
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(48,207,208,0.5), rgba(51,8,103,0.5));
+  
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(48,207,208,0.5), rgba(51,8,103,0.5))
+  }
+
+</style>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body class="gradient-custom">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
+  <div class="container">
+    <a class="navbar-brand" href="#">Student Management Systems</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ms-auto">
+     	<li class="nav-item">
+     		<a class="nav-link" th:href="@{/cources}">Course Details</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" th:href="@{/list}">Home</a>
+		</li>
+		<li class="nav-item">
+          <a class="nav-link" th:href="@{/teacherlog}">Teacher Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+	<div class="container border-0 " >
+			<div class="col-lg- col-md-6 col-sm-6 container justify-content-center card">
+				<h1 class="text-center">Add New Staff</h1>
+				<div class="card-body ">
+					<form th:action="@{/teachers}" th:object ="${teacher}" method="POST">
+						<div class="form-group">
+							<label> Teacher ID :</label>
+							<input class="form-control" type="text" name="roll" th:field ="*{tecid}" placeholder ="Enter the Teacher Id">
+							<label> Name :</label>
+							<input class="form-control" type="text" name="Name" th:field ="*{name}" placeholder ="Enter the Name">
+							<label> Designation :</label>
+							<input class="form-control" type="text" name="disignation" th:field ="*{disignation}" placeholder ="Enter the disignation">
+							<label> Email :</label>
+							<input class="form-control" type="text" name="email" th:field ="*{email}" placeholder ="Enter the email">
+							<label> Phone :</label>
+							<input class="form-control" type="text" name="phone" th:field ="*{phone}" placeholder ="Enter your phone no">
+							<label> Date Of Birth :</label>
+							<input class="form-control" type="date" name="dob" th:field ="*{dob}" placeholder ="Enter the dob">
+							<label> Experience :</label>
+							<input class="form-control" type="number" name="experience" th:field ="*{experience}" placeholder ="Enter the experience">
+							<label> Additional Roll :</label>
+							<select class="form-control " th:field ="*{roll}">
+								<option selected class="text-center" value="-">-</option>
+								<option style="font-weight:bold;" class="text-center" value="Class Advisor 2">Class Advisor 2</option>
+								<option style="font-weight:bold;" class="text-center" value="Class Advisor 3">Class Advisor 3</option>
+								<option style="font-weight:bold;" class="text-center" value="Class Advisor 4">Class Advisor 4</option>
+								<option style="font-weight:bold;" class="text-center" value="Teacher's Admin">Teacher's Admin</option>
+								<option style="font-weight:bold;" class="text-center" value="Curriculum Admin">Curriculum Admin</option>
+								<option style="font-weight:bold;" class="text-center" value="TimeTable Admin">TimeTable Admin</option>
+								<option style="font-weight:bold;" class="text-center" value="Subject Admin">Subject Admin</option>
+							</select>
+						</div>
+						<div class="box-footer">
+							<button type="submit" class="btn btn-primary">
+								submit
+							</button>
+							
+						</div>
+					</form>
+				</div>
+			</div><br>
+		</div>
+</body>
+</html>

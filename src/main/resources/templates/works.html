@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<style>
+body {
+  background: url('https://almashines.s3.dualstack.ap-southeast-1.amazonaws.com/assets/images/gallary_photos/t1597239902_DkdQssf50L.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+input.hidden {
+	position: absolute;
+	left: -9999px;
+}
+
+#profile-image1 {
+	cursor: pointer;
+	width: 100px;
+	height: 100px;
+	border: 2px solid #03b1ce;
+}
+
+.tital {
+	font-size: 16px;
+	font-weight: 500;
+}
+
+.bot-border {
+	border-bottom: 1px #f8f8f8 solid;
+	margin: 5px 0 5px 0
+}
+</style>
+<title>Insert title here</title>
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+<div class="container" style="margin-top:3vh;font-weight:bold;">
+  <div class="card border-0 shadow my-5">
+    <div class="card-body p-5">
+				<div class="panel panel-default">
+					<div class="panel-heading" style="background-color:darkmagenta;">
+						<h4 style="font-weight:bold;color:white;">User Profile</h4>
+					</div>
+					<div class="panel-body text-center" th:each="student: ${student}">
+						<div class="box box-info">
+							<div class="box-body">
+								<div class="col-sm-6">
+									<div align="center">
+										<img alt=""
+											th:src="*{'data:image/jpeg;base64,'+{student.image}}"
+											style="width: 100px; height: 100px;" id="profile-image1"
+											class="img-circle img-responsive">
+										<form enctype="multipart/form-data"
+											th:action="@{/addimage/{uname}(uname=${student.uname}+' '+${student.year})}"
+											method="POST">
+											<input id="profile-image-upload" class="hidden" type="file"
+												name="fileimage" accept="image/png, image/jpeg"> <input
+												disabled="disabled" class="btn btn-light btn-sm" id="submit"
+												type="submit">
+										</form>
+										<div style="color: #999;">click image to change profile
+											image</div>
+									</div>
+
+									<br>
+								</div>
+								<div class="col-sm-6">
+									<h4 style="color: #00b1b1;">Roll Number:</h4>
+									<h4 style="color: #00b1b1;" th:text="${student.roll}"></h4>
+									<form th:action="@{/oness/{uname}(uname=${student.email})}" >
+										<input type="submit" class=" btn btn-outline-dark btn-sm mb-3" style="color:green;font-weight:bold;" value="Achievements" />
+									</form><p></p>
+									<form th:action="@{/timetable/new}" method="post">
+										<input th:if="${#strings.equals(student.year, 2)}" type="text" name="Go" value=12 style="display:none;">
+										<input th:if="${#strings.equals(student.year, 3)}" type="text" name="Go" value=13 style="display:none;">
+										<input th:if="${#strings.equals(student.year, 4)}" type="text" name="Go" value=14 style="display:none;">
+										<input type="submit" class=" btn btn-outline-dark btn-sm mb-3" style="color:brown;font-weight:bold;" value="TimeTable" />
+										
+									</form><br>
+									<form th:action="@{/req/{year}(year=${student.year})}"
+										method="post">
+										<input type="submit" class=" btn btn-outline-dark btn-sm mb-3" style="font-weight:bold;" value="Change Password?">
+									</form>
+								</div>
+								<div class="clearfix"></div>
+								<hr style="margin: 5px 0 5px 0;">
+								<div class="col-sm-5 col-xs-6 tital" style="font-variant:small-caps;">Name:</div>
+								<div class="col-sm-7 col-xs-6 " th:text="${student.name}"></div>
+								<div class="clearfix"></div>
+								<div class="bot-border"></div>
+
+								<div class="col-sm-5 col-xs-6 tital" style="font-variant:small-caps;">DOB:</div>
+								<div class="col-sm-7" th:text="${student.dob}"></div>
+								<div class="clearfix"></div>
+								<div class="bot-border"></div>
+
+								<div class="col-sm-5 col-xs-6 tital" style="font-variant:small-caps;">Father's Name:</div>
+								<div class="col-sm-7" th:text="${student.father}"></div>
+								<div class="clearfix"></div>
+								<div class="bot-border"></div>
+
+								<div class="col-sm-5 col-xs-6 tital" style="font-variant:small-caps;">Mother's Name:</div>
+								<div class="col-sm-7" th:text="${student.mother}"></div>
+								<div class="clearfix"></div>
+								<div class="bot-border"></div>
+
+								<div class="col-sm-5 col-xs-6 tital" style="font-variant:small-caps;">Parent's Mobile:</div>
+								<div class="col-sm-7" th:text="${student.par_num}">></div>
+								<div class="clearfix"></div>
+								<div class="bot-border"></div>
+
+								<div class="col-sm-5 col-xs-6 tital" style="font-variant:small-caps;">Year:</div>
+								<div class="col-sm-7" th:text="${student.year}">></div>
+								<div class="clearfix"></div>
+								<div class="bot-border"></div>
+								<div class="col-sm-5 col-xs-6 tital" style="font-variant:small-caps;">Semester:</div>
+								<div class="col-sm-7" th:text="${student.sem}">></div>
+								<div class="clearfix"></div>
+								<div class="bot-border"></div>
+								<div class="col-sm-5 col-xs-6 tital" style="font-variant:small-caps;">Phone:</div>
+								<div class="col-sm-7" th:text="${student.phone}">></div>
+								<div class="clearfix"></div>
+								<div class="bot-border"></div>
+
+								<div class="col-sm-5 col-xs-6 tital" style="font-variant:small-caps;">Email:</div>
+								<div class="col-sm-7" th:text="${student.email}">></div>
+								<div class="clearfix"></div>
+								<div class="bot-border"></div>
+
+								<div class="col-sm-5 col-xs-6 tital" style="font-variant:small-caps;">Community:</div>
+								<div class="col-sm-7" th:text="${student.cast}">></div>
+								<div class="clearfix"></div>
+								<div class="bot-border"></div>
+								<div class="col-sm-5 col-xs-6 tital" style="font-variant:small-caps;">Regulation:</div>
+								<div class="col-sm-7" th:text="${student.regulation}">></div>
+								<div class="clearfix"></div>
+								<div class="bot-border"></div>
+								<div class="col-sm-5 col-xs-6 tital" style="font-variant:small-caps;">Aadhar:</div>
+								<div class="col-sm-7" th:text="${student.aadhar}"></div>
+								<div class="clearfix"></div>
+								<div class="bot-border"></div>
+								<div class="col-sm-5 col-xs-6 tital" style="font-variant:small-caps;">Address:</div>
+								<div class="col-sm-7" th:text="${student.address}">></div>
+								<div class="clearfix"></div>
+								<div class="bot-border"></div>
+
+								<div class="col-sm-5 col-xs-6 tital" style="font-variant:small-caps;">State:</div>
+								<div class="col-sm-7" th:text="${student.state}">></div>
+								<div class="clearfix"></div>
+								<div class="bot-border"></div>
+								<div class="col-sm-5 col-xs-6 tital" style="font-variant:small-caps;">Taluk/City:</div>
+								<div class="col-sm-7" th:text="${student.taluk}">></div>
+								<div class="clearfix"></div>
+								<div class="bot-border"></div>
+								<div class="col-sm-5 col-xs-6 tital" style="font-variant:small-caps;">District:</div>
+								<div class="col-sm-7" th:text="${student.district}">></div>
+								<div class="clearfix"></div>
+								<div class="bot-border"></div>
+								<div class="col-sm-5 col-xs-6 tital" style="font-variant:small-caps;">Pincode:</div>
+								<div class="col-sm-7" th:text="${student.pincode}">></div>
+								<div class="clearfix"></div>
+								<div class="bot-border"></div>
+								<div class="col-sm-5 col-xs-6 tital" style="font-variant:small-caps;">Blood Group:</div>
+								<div class="col-sm-7" th:text="${student.b_grp}">></div>
+								<div class="clearfix"></div>
+								<div class="bot-border"></div>
+								<div class="col-sm-5 col-xs-6 tital" style="font-variant:small-caps;">Gender:</div>
+								<div class="col-sm-7" th:text="${student.gender}">></div>
+								<div class="clearfix"></div>
+								<div class="bot-border"></div>
+							</div>
+						</div>
+				<div>
+					<a th:href="@{/}" class="btn btn-primary" type="submit">Logout</a>
+				</div>
+			<script>
+				$(function() {
+					$('#profile-image1').on('click', function() {
+						$('#profile-image-upload').click();
+					});
+				});
+				$(document).ready(function() {
+					$('#profile-image-upload').change(function() {
+						$('#submit').removeAttr('disabled');
+					});
+				});
+			</script>
+		</div>
+		</div>
+	</div>
+	</div>
+</div>
+</body>
+</html>

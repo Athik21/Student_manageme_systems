@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html  xmlns:th= "http://www.thymeLeaf.org">
+<head>
+<meta charset="ISO-8859-1">
+
+<title>Student Management System</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<style> 
+ .gradient-custom {
+    /* fallback for old browsers */
+    background: #30cfd0;
+  
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(48,207,208,0.5), rgba(51,8,103,0.5));
+  
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(48,207,208,0.5), rgba(51,8,103,0.5))
+  }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body class="gradient-custom">
+<nav  class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
+  <div  class="container">
+    <a class="navbar-brand" href="#">Student Management Systems</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ms-auto">
+     	<li class="nav-item">
+     		<a class="nav-link" th:href="@{/cources}">Course Details</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" th:href="@{/list}">Home</a>
+		</li>
+      </ul>
+    </div>
+  </div>
+</nav>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg- col-md-6 col-sm-6 container justify-content-center card">
+				<h1 class="text-center">Add New Subject</h1>
+				<div class="card-body">
+					<form th:if="${session.m==0}" th:action="@{/thirds/{reg}(reg=${session.reg})}" th:object ="${third}" method="POST">
+						<div class="form-group">
+							
+							<label> Subject Code :</label>
+							<input class="form-control" type="text" name="firstName" th:field ="*{code}" placeholder ="Enter the Subject Code">
+							<label> Course Name :</label>
+							<input class="form-control" type="text" name="lastName" th:field ="*{name}" placeholder ="Enter the Subject Name">
+							<label> Credits :</label>
+							<input class="form-control" type="text" name="email" th:field ="*{credit}" placeholder ="Enter the Credits">
+							<label for="lang">Category:</label>
+							      <select name="Category" class="form-control" id="lang" th:field ="*{category}">
+							        <option value="PC">PC(PROGRAM CORE)</option>
+							        <option value="HS">HS(hUMANITY SCIENCES)</option>
+							        <option value="BS">BS(BASIC SCIENCES)</option>
+							        <option value="ES">ES(ENGINEERING SCIENCES)</option>
+							        <option value="PE">PE(PROFESSIONAL ELECTIVE)</option>
+							        <option value="OE">OE(OPEN ELECTIVE)</option>
+							        <option value="EEC">EEC(pROJECT WORK)</option>
+							        <option value="MC">MC(MANDATORY COURSES)</option>
+							      </select>
+							<label for="type"> Type :</label>
+							<select name="Category" class="form-control" id="type" th:field ="*{type}">
+								<option value="Theory">Theory</option>
+							    <option value="Practical">Practical</option>
+						    </select>
+						    <input class="form-control" type="text" name="dob" th:field ="*{sem}" style="display:none;" value="#{third.sem}" placeholder ="Enter the Type (theory/practicals)">
+							
+						</div>
+						<div class="box-footer">
+							<button type="submit" class="btn btn-primary">
+								submit
+							</button>
+							
+						</div>
+					</form>
+					<form th:if="${session.m==1}" th:action="@{/profsave/{reg}(reg=${session.reg})}" th:object ="${prof}" method="POST">
+						<div class="form-group">
+							
+							<label> Subject Code :</label>
+							<input class="form-control" type="text" name="firstName" th:field ="*{code}" placeholder ="Enter the Subject Code">
+							<label> Course Name :</label>
+							<input class="form-control" type="text" name="lastName" th:field ="*{name}" placeholder ="Enter the Subject Name">
+							<label> Credits :</label>
+							<input class="form-control" type="text" name="email" th:field ="*{credit}" placeholder ="Enter the Credits">
+							<select style="display:none;" name="Category" class="form-control" id="lang" th:field ="*{category}">
+						        <option value="PE">PE(PROFESSIONAL ELECTIVE)</option>
+				  		    </select>
+							<label for="type"> Type :</label>
+							<select name="Category" class="form-control" id="type" th:field ="*{type}">
+								<option value="Theory">Theory</option>
+							    <option value="Practical">Practical</option>
+						    </select>
+						    <input class="form-control" type="text" name="dob" th:field ="*{sem}" style="display:none;" value="#{third.sem}" placeholder ="Enter the Type (theory/practicals)">
+							
+						</div>
+						<div class="box-footer">
+							<button type="submit" class="btn btn-primary">
+								submit
+							</button>
+							
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

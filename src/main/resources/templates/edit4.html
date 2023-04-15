@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th= "http://www.thymeLeaf.org">
+<head>
+<meta charset="ISO-8859-1">
+
+<title>Student Management System</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+</head>
+<style>
+ .gradient-custom {
+    /* fallback for old browsers */
+    background: #30cfd0;
+  
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(48,207,208,0.5), rgba(51,8,103,0.5));
+  
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(48,207,208,0.5), rgba(51,8,103,0.5))
+  }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body class="gradient-custom">
+<nav class="navbar navbar-expand-lg navbar-light p-3 navbar navbar-dark bg-blue" >
+  <div class="container-fluid">
+    <a class="navbar-brand text-dark" href="#">Student Management Systems</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+ 
+    <div class=" collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ms-auto ">
+        <li class="nav-item">
+          <a class="nav-link mx-2 text-dark" aria-current="page" th:href="@{/cources}">Course Details</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link mx-2 text-dark" th:href="@{/list}">Home</a>
+        </li>
+       
+      </ul>
+
+    </div>
+  </div>
+</nav>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg- col-md-6 col-sm-6 container justify-content-center card">
+				<h1 class="text-center">Update New Student</h1>
+				<div class="card-body">
+					<form th:action="@{/student4/{id}(id=${student.id})}" th:object ="${student}" method="POST">
+						<div class="form-group">
+							<label> Roll No :</label>
+							<input class="form-control" type="text" name="roll" th:field ="*{roll}" placeholder ="Enter the roll number">
+							<label> Name :</label>
+							<input class="form-control" type="text" name="email" th:field ="*{name}" placeholder ="Enter the name">
+							<label> Date Of Birth :</label>
+							<input class="form-control" type="date" name="dob" th:field ="*{dob}" placeholder ="Enter the dob">
+							<label> Father's Name :</label>
+							<input class="form-control" type="text" name="phone" th:field ="*{father}" placeholder ="Enter the father's name">
+							<label> Mother's Name :</label>
+							<input class="form-control" type="text" name="year of study" th:field ="*{mother}" placeholder ="Enter the moter's name">
+							<label> Parent's Mobile :</label>
+							<input class="form-control" type="text" name="email" th:field ="*{par_num}" placeholder ="Enter the parent's mobile">
+							<label> Year :</label>
+							<input class="form-control" type="text" name="dob" th:field ="*{year}" placeholder ="Enter the year">
+							<label> Phone Number :</label>
+							<input class="form-control" type="text" name="phone" th:field ="*{phone}" placeholder ="Enter the phone number">
+							<label> Email :</label>
+							<input class="form-control" type="text" name="year of study" th:field ="*{email}" placeholder ="Enter the email id">
+							<label> Aadhar Id :</label>
+							<input class="form-control" type="text" name="email" th:field ="*{aadhar}" placeholder ="Enter the aadhar id">
+							<label> Community :</label>
+							<input class="form-control" type="text" name="dob" th:field ="*{cast}" placeholder ="Enter the cast">
+							<label> Regulation :</label>
+							<input class="form-control" type="text" name="phone" th:field ="*{regulation}" placeholder ="Enter the regulation">
+							<label> Semester :</label>
+							<input class="form-control" type="text" name="year of study" th:field ="*{sem}" placeholder ="Enter the semester">
+							<label> Address :</label>
+							<input class="form-control" type="text" name="email" th:field ="*{address}" placeholder ="Enter the address">
+							<label> State :</label>
+							<input class="form-control" type="text" name="dob" th:field ="*{state}" placeholder ="Enter the state">
+							<label> Taluk/City :</label>
+							<input class="form-control" type="text" name="phone" th:field ="*{taluk}" placeholder ="Enter the taluk/city">
+							<label> District :</label>
+							<input class="form-control" type="text" name="year of study" th:field ="*{district}" placeholder ="Enter the district">
+							<label> Pincode :</label>
+							<input class="form-control" type="text" name="dob" th:field ="*{pincode}" placeholder ="Enter the pincode">
+							<label> Blood Group :</label>
+							<input class="form-control" type="text" name="phone" th:field ="*{b_grp}" placeholder ="Enter the blood group">
+							<label> Gender :</label>
+							<input class="form-control" type="text" name="year of study" th:field ="*{gender}" placeholder ="Enter the gender">
+						
+						</div>
+						<div class="box-footer">
+							<button type="submit" class="btn btn-primary">
+								submit
+							</button>
+							
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

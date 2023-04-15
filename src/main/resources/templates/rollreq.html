@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+body {
+  background: url('https://almashines.s3.dualstack.ap-southeast-1.amazonaws.com/assets/images/gallary_photos/t1597239902_DkdQssf50L.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+
+.grids {
+	display: grid;
+	align-content: centre;
+}
+
+.card {
+	background-color: #fff;
+	border-radius: 10px;
+	border: none;
+	position: relative;
+	margin-bottom: 30px;
+	box-shadow: 0 0.46875rem 2.1875rem rgba(0,0,0), 0 0.9375rem
+		1.40625rem rgba(90, 97, 105, 0.7), 0 0.25rem 0.53125rem
+		rgba(90, 97, 105, 0.12), 0 0.125rem 0.1875rem rgba(90, 97, 105, 0.7);
+}
+
+.l-bg-cherry {
+	background: linear-gradient(to right, #493240, #f09) !important;
+	color: #fff;
+}
+
+.l-bg-blue-dark {
+	background: linear-gradient(to right, #373b44, #4286f4) !important;
+	color: #fff;
+}
+
+.l-bg-green-dark {
+	background: linear-gradient(to right, #0a504a, #38ef7d) !important;
+	color: #fff;
+}
+
+.l-bg-orange-dark {
+	background: linear-gradient(to right, #a86008, #ffba56) !important;
+	color: #fff;
+}
+
+.card .card-statistic-3 .card-icon-large .fas, .card .card-statistic-3 .card-icon-large .far,
+	.card .card-statistic-3 .card-icon-large .fab, .card .card-statistic-3 .card-icon-large .fal
+	{
+	font-size: 110px;
+}
+
+.card .card-statistic-3 .card-icon {
+	text-align: center;
+	line-height: 50px;
+	margin-left: 15px;
+	color: #000;
+	position: absolute;
+	right: -5px;
+	top: 20px;
+	opacity: 0.1;
+}
+
+.l-bg-cyan {
+	background: linear-gradient(135deg, #289cf5, #84c0ec) !important;
+	color: #fff;
+}
+
+.l-bg-green {
+	background: linear-gradient(135deg, #23bdb8 0%, #43e794 100%) !important;
+	color: #fff;
+}
+
+.l-bg-orange {
+	background: linear-gradient(to right, #f9900e, #ffba56) !important;
+	color: #fff;
+}
+
+.l-bg-cyan {
+	background: linear-gradient(135deg, #289cf5, #84c0ec) !important;
+	color: #fff;
+}
+
+@media only screen and (max-width: 700px) {
+	.wrapper {
+		display: grid;
+		place-items: center;
+		grid-template-columns: repeat(1, 1fr);
+		margin-top: 15%;
+	}
+	.item {
+		min-width: 50vh;
+	}
+}
+.gradient-custom {
+    /* fallback for old browsers */
+    background: #30cfd0;
+  
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(48,207,208,0.5), rgba(51,8,103,0.5));
+  
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(48,207,208,0.5), rgba(51,8,103,0.5))
+  }
+</style>
+	<script type="text/javascript">
+        function preventBack() { window.history.forward(); }
+        setTimeout("preventBack()", 0);
+        window.onunload = function () { null };
+    </script> 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
+  <div class="container">
+    <a class="navbar-brand" href="#">Student Management Systems</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ms-auto">
+		<li class="nav-item">
+			<a class="nav-link" th:href="@{/list}">logout</a>
+		</li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container ">
+    <div class="card-body p-5">
+      <article class="wrapper">
+		
+			<div class="col-md-8 offset-md-2">
+				<div class="card l-bg-green-dark">
+					<div class="card-statistic-3 p-4">
+						<div class="row align-items-center mb-2 d-flex">
+							<div th:if="${session.sets==0}" class="alert alert-warning"
+								role="alert">enter right password</div>
+							<div th:if="${session.sets==1}" class="alert alert-warning"
+								role="alert">no such user exist</div>
+
+							<div class="container h-100 d-fkex justify-content-center">
+											<form th:action="@{/rollreq}" method="post">
+											<th:block>
+												<input th:if=${#strings.equals(session.rate,2)} type="text" name ="rate" value=2 style="display:none;"/>
+												<input th:if=${#strings.equals(session.rate,3)} type="text" name ="rate" value=3 style="display:none;"/>
+												<input th:if=${#strings.equals(session.rate,4)} type="text" name ="rate" value=4 style="display:none;"/>
+												<input th:if=${#strings.equals(session.rate,5)} type="text" name ="rate" value=5 style="display:none;"/>
+												<input th:if=${#strings.equals(session.rate,6)} type="text" name ="rate" value=6 style="display:none;"/>
+											</th:block>
+											<div class="form-group">
+												<div th:if="${session.msgs==0}" class="alert alert-warning"
+													role="alert">invalid UserName/Password</div>
+												<div th:if="${session.msgs==1}" class="alert alert-warning"
+													role="alert">your are not authorized person</div>
+												<label>User Name: </label>
+												<input type="text" id="login" class="form-control"
+													name="uname" placeholder="enter the username(email)">
+												<label>Password: </label>
+												<input type="password" id="password" class="form-control"
+													name="pass" placeholder="password">
+												<label th:if="${#strings.equals(session.rate,2)}">Select Year: </label>
+												<div th:if="${#strings.equals(session.rate,2)}">
+												<div
+													class="custom-control custom-radio custom-control-inline">
+													<input name="year" type="radio" id="option1"
+														class="custom-control-input" value=2> <label
+														class="custom-control-label" for="option1">Second</label>
+												</div>
+												<div
+													class="custom-control custom-radio custom-control-inline">
+													<input name="year" type="radio" id="option2"
+														class="custom-control-input" value=3> <label
+														class="custom-control-label" for="option2">Third</label>
+												</div>
+												<div
+													class="custom-control custom-radio custom-control-inline">
+													<input name="year" type="radio" id="option3"
+														class="custom-control-input" value=4> <label
+														class="custom-control-label" for="option3">Final</label>
+												</div>
+												</div><br>
+												<div class="box-footer text-center">
+													<button type="submit" class="btn btn-primary">Login </button>
+												</div>
+												</div>
+											</form>
+										</div>
+						</div>
+					</div>
+			</div>
+		</div>
+	</article>
+    </div>
+  </div>
+</body>
+</html>

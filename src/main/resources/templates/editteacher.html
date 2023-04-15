@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th= "http://www.thymeLeaf.org">
+<head>
+<meta charset="ISO-8859-1">
+
+<title>Student Management System</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+</head>
+<style>
+ .gradient-custom {
+    /* fallback for old browsers */
+    background: #30cfd0;
+  
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(48,207,208,0.5), rgba(51,8,103,0.5));
+  
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(48,207,208,0.5), rgba(51,8,103,0.5))
+  }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body class="gradient-custom">
+<nav class="navbar navbar-expand-lg navbar-light p-3 navbar navbar-dark bg-blue" >
+  <div class="container-fluid">
+    <a class="navbar-brand text-dark" href="#">Student Management Systems</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+ 
+    <div class=" collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ms-auto ">
+        <li class="nav-item">
+          <a class="nav-link mx-2 text-dark" aria-current="page" th:href="@{/cources}">Course Details</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link mx-2 text-dark" th:href="@{/list}">Home</a>
+        </li>
+       
+      </ul>
+
+    </div>
+  </div>
+</nav>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg- col-md-6 col-sm-6 container justify-content-center card">
+				<h1 class="text-center">Update Staff</h1>
+				<div class="card-body">
+					<form th:action="@{/teacheredit/{id}(id=${teacher.id})}" th:object ="${teacher}" method="POST">
+						<div class="form-group">
+							<label> Teacher Id :</label>
+							<input class="form-control" type="text" name="roll" th:field ="*{tecid}" placeholder ="Enter the roll number">
+							<label> Name :</label>
+							<input class="form-control" type="text" name="email" th:field ="*{name}" placeholder ="Enter the name">
+							<label> Designation :</label>
+							<input class="form-control" type="date" name="dob" th:field ="*{disignation}" placeholder ="Enter the dob">
+							<label> Email :</label>
+							<input class="form-control" type="text" name="phone" th:field ="*{email}" placeholder ="Enter the father's name">
+							<label> Phone Number :</label>
+							<input class="form-control" type="text" name="year of study" th:field ="*{phone}" placeholder ="Enter the moter's name">
+							<label> Date of Birth :</label>
+							<input class="form-control" type="text" name="email" th:field ="*{dob}" placeholder ="Enter the parent's mobile">
+							<label> Experience :</label>
+							<input class="form-control" type="text" name="dob" th:field ="*{experience}" placeholder ="Enter the year">
+							</div>
+						<div class="box-footer">
+							<button type="submit" class="btn btn-primary">
+								submit
+							</button>
+							
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns:th= "http://www.thymeLeaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Student Management System</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.gradient-custom {
+    /* fallback for old browsers */
+    background: #30cfd0;
+  
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(48,207,208,0.5), rgba(51,8,103,0.5));
+  
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(48,207,208,0.5), rgba(51,8,103,0.5))
+  }
+</style>
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+<!-- Include the plugin's CSS and JS: -->
+<script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
+<link rel="stylesheet" href="css/bootstrap-multiselect.css" type="text/css"/>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body class="gradient-custom">
+<nav class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
+  <div class="container">
+    <a class="navbar-brand" href="#">Student Management Systems</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ms-auto">
+     	<li class="nav-item">
+     		<a class="nav-link" th:href="@{/cources}">Course Details</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" th:href="@{/list}">Home</a>
+		</li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="text-center container">
+<div class="alert alert-info ">
+  <strong>Please press ctrl and select subject for selecting more than one subject    </strong>(ex: abc/xyz)
+</div>
+</div>
+<div class="container">
+  <div class="border-0 shadow my-5">
+    <div class="card-body p-5">
+		<form th:action="@{/timetable/{id}(id=${table.id})}" th:object= "${table}" method="POST">
+		<div  class="table-sm table-responsive table table-hover">
+		<table class="table table-striped table-bordered">
+				<tr class="table-success text-center" style="font-weight:bold;">
+					<td>DAY:</td>
+					<td th:text ="*{days}" ></td>
+				</tr>
+				<tr class="table-success text-center" style="font-weight:bold;">
+					<td>HOUR1:</td>
+					<td>
+						<select class="form-control form-select-lg mb-3"size="4" multiple th:field ="*{hour1}">
+							<option  class="text-center" th:each="curi :${curi}" th:value="${{curi.name}}" th:text="${curi.name}"/></option>
+							<option class="text-center" th:each="prof :${prof}" th:value="${{prof.name}}" th:text="${prof.name}"/></option>
+						</select>
+					</td>
+				</tr>
+				<tr class="table-success text-center" style="font-weight:bold;">
+					<td>HOUR2:</td>
+					<td>
+						<select class="form-control form-select-lg mb-3"size="4" multiple th:field ="*{hour2}">
+							<option class="text-center" th:each="curi :${curi}" th:value="${{curi.name}}" th:text="${curi.name}"/></option>
+							<option class="text-center" th:each="prof :${prof}" th:value="${{prof.name}}" th:text="${prof.name}"/></option>
+						</select>
+					</td>
+				</tr >
+				<tr class="table-success text-center" style="font-weight:bold;">
+					<td>HOUR3:</td>
+					<td>
+						<select class="form-control form-select-lg mb-3"size="4" multiple  th:field ="*{hour3}">
+							<option class="text-center" th:each="curi :${curi}" th:value="${{curi.name}}" th:text="${curi.name}"/></option>
+							<option class="text-center" th:each="prof :${prof}" th:value="${{prof.name}}" th:text="${prof.name}"/></option>
+						</select>
+					</td>
+				</tr>
+				<tr class="table-success text-center" style="font-weight:bold;">
+					<td>HOUR4:</td>
+					<td>
+						<select class="form-control form-select-lg mb-3"size="4" multiple th:field ="*{hour4}">
+							<option class="text-center" th:each="curi :${curi}" th:value="${{curi.name}}" th:text="${curi.name}"/></option>
+							<option class="text-center" th:each="prof :${prof}" th:value="${{prof.name}}" th:text="${prof.name}"/></option>
+						</select>
+					</td>
+				</tr>
+				<tr class="table-success text-center" style="font-weight:bold;">
+					<td>HOUR5:</td>
+					<td>
+						<select class="form-control form-select-lg mb-3"size="4" multiple  th:field ="*{hour5}">
+							<option class="text-center" th:each="curi :${curi}" th:value="${{curi.name}}" th:text="${curi.name}"/></option>
+							<option class="text-center" th:each="prof :${prof}" th:value="${{prof.name}}" th:text="${prof.name}"/></option>
+						</select>
+					</td>
+				</tr>
+				<tr class="table-success text-center" style="font-weight:bold;">
+					<td>HOUR6:</td>
+					<td>
+						<select class="form-control form-select-lg mb-3"size="4" multiple th:field ="*{hour6}">
+							<option class="text-center" th:each="curi :${curi}" th:value="${{curi.name}}" th:text="${curi.name}"/></option>
+							<option class="text-center" th:each="prof :${prof}" th:value="${{prof.name}}" th:text="${prof.name}"/></option>
+						</select>
+					</td>
+				</tr>
+				<tr class="table-success text-center" style="font-weight:bold;">
+					<td>HOUR7:</td>
+					<td>
+						<select class="form-control form-select-lg mb-3"size="4" multiple  th:field ="*{hour7}">
+							<option class="text-center" th:each="curi :${curi}" th:value="${{curi.name}}" th:text="${curi.name}"/></option>
+							<option class="text-center" th:each="prof :${prof}" th:value="${{prof.name}}" th:text="${prof.name}"/></option>
+						</select>
+					</td>
+				</tr>
+		</table>
+		<div th:switch="${session.year}" class="text-center" style="font-weight:bold;margin:auto;">
+				<button th:case="'2'" value=2 name="get" style="font-weight:bold;" type="submit" class="btn btn-outline-dark">save</button>
+				<button th:case="'3'" value=3 name="get" style="font-weight:bold;" type="submit" class="btn btn-outline-dark">save</button>
+				<button th:case="'4'" value=4 name="get" style="font-weight:bold;" type="submit" class="btn btn-outline-dark">save</button>
+		</div>
+		</div>
+		</form>
+	</div>
+</div>
+</div>
+</html>

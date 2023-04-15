@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th= "http://www.thymeLeaf.org">
+<head>
+<meta charset="ISO-8859-1">
+
+<title>Student Management System</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+</head>
+<style>
+ .gradient-custom {
+    /* fallback for old browsers */
+    background: #30cfd0;
+  
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(48,207,208,0.5), rgba(51,8,103,0.5));
+  
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(48,207,208,0.5), rgba(51,8,103,0.5))
+  }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body class="gradient-custom">
+<nav class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
+  <div class="container">
+    <a class="navbar-brand" href="#">Student Management Systems</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ms-auto">
+		<li class="nav-item">
+			<a class="nav-link" onclick="history.back()" >Back</a>
+		</li>
+      </ul>
+    </div>
+  </div>
+</nav>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg- col-md-6 col-sm-6 container justify-content-center card">
+				<br><div class="text-center container">
+					<div class="alert alert-info ">
+ 						 <strong>Add your interested subjects on priority!!!(<th:block th:text="${session.yer}"></th:block><sup th:if="${#strings.equals(session.yer, 2)}">nd</sup>
+ 						 <sup th:if="${#strings.equals(session.yer, 3)}">rd</sup>
+ 						 <sup th:if="${#strings.equals(session.yer, 4)}">th</sup>year)</strong>
+					</div>
+					
+				</div>
+				<div class="card-body">
+					<form th:action="@{/intsave/{uname}(uname=${users.uname}+' '+${session.yer})}" th:object ="${users}" method="POST">
+						<div class="form-group" th:if="${#strings.equals(session.yer, 2)}">
+							<label>Subject 1:</label>
+							<select class="form-control " th:field ="${users.subi21}">
+								<option  class="text-center" th:each="curi :${curi}" th:value="${{curi.name}}" th:text="${curi.name}"/></option>
+								<option class="text-center" th:each="prof :${prof}" th:value="${{prof.name}}" th:text="${prof.name}"/></option>
+							</select>
+							<label>Subject 2:</label>
+							<select class="form-control " th:field ="${users.subi22}">
+								<option  class="text-center" th:each="curi :${curi}" th:value="${{curi.name}}" th:text="${curi.name}"/></option>
+								<option class="text-center" th:each="prof :${prof}" th:value="${{prof.name}}" th:text="${prof.name}"/></option>
+							</select>
+							<label>Subject 3:</label>
+							<select class="form-control " th:field ="${users.subi23}">
+								<option  class="text-center" th:each="curi :${curi}" th:value="${{curi.name}}" th:text="${curi.name}"/></option>
+								<option class="text-center" th:each="prof :${prof}" th:value="${{prof.name}}" th:text="${prof.name}"/></option>
+							</select>	
+						</div>
+						<div  class="form-group" th:if="${#strings.equals(session.yer, 3)}">
+							<label>Subject 1:</label>
+							<select class="form-control " th:field ="${users.subi31}">
+								<option  class="text-center" th:each="curi :${curi}" th:value="${{curi.name}}" th:text="${curi.name}"/></option>
+								<option class="text-center" th:each="prof :${prof}" th:value="${{prof.name}}" th:text="${prof.name}"/></option>
+							</select>
+							<label>Subject 2:</label>
+							<select class="form-control " th:field ="${users.subi32}">
+								<option  class="text-center" th:each="curi :${curi}" th:value="${{curi.name}}" th:text="${curi.name}"/></option>
+								<option class="text-center" th:each="prof :${prof}" th:value="${{prof.name}}" th:text="${prof.name}"/></option>
+							</select>
+							<label>Subject 3:</label>
+							<select class="form-control " th:field ="${users.subi33}">
+								<option  class="text-center" th:each="curi :${curi}" th:value="${{curi.name}}" th:text="${curi.name}"/></option>
+								<option class="text-center" th:each="prof :${prof}" th:value="${{prof.name}}" th:text="${prof.name}"/></option>
+							</select>
+						</div>
+						<div class="form-group" th:if="${#strings.equals(session.yer, 4)}">
+							<label>Subject 1:</label>
+							<select class="form-control " th:field ="${users.subi41}">
+								<option  class="text-center" th:each="curi :${curi}" th:value="${{curi.name}}" th:text="${curi.name}"/></option>
+								<option class="text-center" th:each="prof :${prof}" th:value="${{prof.name}}" th:text="${prof.name}"/></option>
+							</select>
+							<label>Subject 2:</label>
+							<select class="form-control" th:field ="${users.subi42}">
+								<option  class="text-center" th:each="curi :${curi}" th:value="${{curi.name}}" th:text="${curi.name}"/></option>
+								<option class="text-center" th:each="prof :${prof}" th:value="${{prof.name}}" th:text="${prof.name}"/></option>
+							</select>
+							<label>Subject 3:</label>
+							<select class="form-control" th:field ="${users.subi43}">
+								<option  class="text-center" th:each="curi :${curi}" th:value="${{curi.name}}" th:text="${curi.name}"/></option>
+								<option class="text-center" th:each="prof :${prof}" th:value="${{prof.name}}" th:text="${prof.name}"/></option>
+							</select>
+						</div>
+						<div class="box-footer">
+							<button type="submit" class="btn btn-primary">
+								submit
+							</button>
+							
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th= "http://www.thymeLeaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<title>Student Management System</title>
+<style>
+
+ .gradient-custom {
+    /* fallback for old browsers */
+    background: #30cfd0;
+  
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(48,207,208,0.5), rgba(51,8,103,0.5));
+  
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(48,207,208,0.5), rgba(51,8,103,0.5))
+  }
+#formfile::before {
+  content: "Pick file";
+  position: absolute;
+  z-index: 2;
+  font-weight:bold;
+  color:black;
+  background-color: white;
+  width: 98px;
+  border:2px solid black;
+  margin-top:1px;
+  padding-left:20px;
+}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body class="gradient-custom">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
+  <div class="container">
+    <a class="navbar-brand" href="#">Student Management Systems</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ms-auto">
+     	<li class="nav-item">
+     		<a class="nav-link" th:href="@{/cources}">Course Details</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" th:href="@{/list}">Home</a>
+		</li>
+		<li class="nav-item">
+          <a class="nav-link" th:href="@{/teacherlog}">Teacher Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="text-center container">
+<div class="alert alert-info ">
+  <strong>Instructions to upload Excel file!!!</strong> <br>
+ 	1) Please upload using PC.<br>
+ 	2) First, download the file format and enter all the details.<br>
+ 	3) Excel file name must be "Second_year_details".<br>
+ 	4) Excel file must have at least one student record.<br>
+ 	5) Select the file from any folder other than D folder and click Submit.<br>
+</div>
+<div class="alert alert-info ">
+  <strong>Instructions on uploading students details!!!</strong> <br>
+ 	1) Please click delete all button before uploading a fresh Excel File. &nbsp;&nbsp;<a class="btn btn-outline-dark btn-sm mb-3" style="font-weight:bold;" th:href="@{/student2/delete}" onclick="alert('This will delete all the student record!!!');">
+							Delete All</a><br>
+ 	2) To delete a particular student, please make changes in Excel file and re-upload it.<br>
+</div>
+</div>
+	<div class="container border-0 " >
+			<div class="col-lg-3 col-md-6 col-sm-6 container justify-content-center card">
+			<div class="text-center"><img class="rounded-circle shadow-4-strong" style="width: 150px; height: 150px;" alt="" src="https://play-lh.googleusercontent.com/37EzETO6gZyKmCg2kBIFX1e9gkubxZrVa5fHJ6yOaa7VvEShHjKv2RdtwnZt9Sk258s" />
+	        </div>
+	        <div class="card-body">
+	        <div class="text-center" style="background-color:white;">
+				<a class="btn btn-outline-dark btn-sm mb-3" style="font-weight:bold;"th:href="@{/exceldownload/{year}(year=${2})}">Download Excel Format</a>
+	        <br>
+	        <form th:action ="@{/uploadFile}" method = "POST" enctype = "multipart/form-data">
+		        <input style="display:none;" id="imgs" type = "file" name = "file" value = "Browse File" onchange="form.submit()"/>
+		   <label for="imgs"><a class="btn btn-outline-dark btn-sm mb-3" style="font-weight:bold;"onMouseOut="this.style.color='black'"onMouseOver="this.style.color='white'">Upload Excel File</a>
+	       </label>
+		    </form>
+		    <a th:href="@{/saveData}" style="margin:auto;font-weight:bold;" class="btn btn-outline-primary">SUBMIT</a>
+	      </div>
+	    </div>
+	    </div>
+	</div><br><br>
+</body>
+</html>

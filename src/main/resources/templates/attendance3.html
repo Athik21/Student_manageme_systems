@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html xmlns:th= "http://www.thymeLeaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Student Management System</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style> 
+ .gradient-custom {
+    /* fallback for old browsers */
+    background: #30cfd0;
+  
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(48,207,208,0.5), rgba(51,8,103,0.5));
+  
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(48,207,208,0.5), rgba(51,8,103,0.5))
+  }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body class="gradient-custom">
+<nav  class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
+  <div  class="container">
+    <a class="navbar-brand" href="#">Student Management Systems</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ms-auto">
+		<li class="nav-item">
+			<a class="nav-link" onclick="history.go(-3)">Back</a>
+		</li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="text-center container">
+<div class="alert alert-info">
+	<strong>Subject & Year: <th:block th:text="  ${session.sub}"></th:block></strong><br>
+	<strong>Date: <th:block th:text="  ${session.date}"></th:block></strong><br>
+</div>	
+</div>
+<div class="container">
+		<div class="row">
+		<div class="col-lg- col-md-6 col-sm-6 container justify-content-center card">
+		<div th:if="${att==null}">
+		<div class="alert alert-success" role="alert">
+			<h4 class="alert-heading">Well done!</h4>
+			<p>You have successfully marked today's attendance</p>
+			<hr>
+			<p class="mb-0">THANK YOU</p>
+		</div>
+		<div class="box-footer"><button class="btn btn-primary" onclick="history.go(-3)">Back to Home</button></div></div>
+		
+		<form th:if="${att!=null}" th:action="@{/saveatt3/{subs}(subs=${session.sub}+' '+${session.date})}" method="POST"  th:object="${att}">
+		<br><input  class="form-control text-center" type="text" name="hour" th:field ="*{hour}" placeholder ="Enter the hour" />
+		<br><table class="table table table-striped table-bordered">
+			<thead class="bg-dark" style="color:white;font-weight:bold;">
+				<tr>
+					<th>ROLL NUMBER</th>
+					<th>ATTENDANCE</th>
+				</tr>
+			</thead>
+				<tr th:each="stu: ${stu}" style="font-weight:bold;" class="table-success text-center">
+					<th:block th:switch="${stu.id}">
+						<td th:text="${stu.roll}"></td>
+						<td th:case="'1'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="option1" class="custom-control-input" value="Present" th:field="*{a}" ><label class="custom-control-label" for="option1">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="option2" class="custom-control-input" value="Absent" th:field="*{a}"><label class="custom-control-label" for="option2">Absent</label></div></td>
+						<td th:case="'2'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o1" class="custom-control-input" value="Present" th:field="*{b}"><label class="custom-control-label" for="o1">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o2" class="custom-control-input" value="Absent" th:field="*{b}"><label class="custom-control-label" for="o2">Absent</label></div></td>
+						<td th:case="'3'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o3" class="custom-control-input" value="Present" th:field="*{c}"><label class="custom-control-label" for="o3">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o4" class="custom-control-input" value="Absent" th:field="*{c}"><label class="custom-control-label" for="o4">Absent</label></div></td>
+						<td th:case="'4'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o5" class="custom-control-input" value="Present" th:field="*{d}"><label class="custom-control-label" for="o5">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o6" class="custom-control-input" value="Absent" th:field="*{d}"><label class="custom-control-label" for="o6">Absent</label></div></td>
+						<td th:case="'5'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o7" class="custom-control-input" value="Present" th:field="*{e}"><label class="custom-control-label" for="o7">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o8" class="custom-control-input" value="Absent" th:field="*{e}"><label class="custom-control-label" for="o8">Absent</label></div></td>
+						<td th:case="'6'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o9" class="custom-control-input" value="Present" th:field="*{f}"><label class="custom-control-label" for="o9">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o10" class="custom-control-input" value="Absent" th:field="*{f}"><label class="custom-control-label" for="o10">Absent</label></div></td>
+						<td th:case="'7'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o11" class="custom-control-input" value="Present" th:field="*{g}"><label class="custom-control-label" for="o11">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o12" class="custom-control-input" value="Absent" th:field="*{g}"><label class="custom-control-label" for="o12">Absent</label></div></td>
+						<td th:case="'8'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o13" class="custom-control-input" value="Present" th:field="*{h}"><label class="custom-control-label" for="o13">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o14" class="custom-control-input" value="Absent" th:field="*{h}"><label class="custom-control-label" for="o14">Absent</label></div></td>
+						<td th:case="'9'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o15" class="custom-control-input" value="Present" th:field="*{i}"><label class="custom-control-label" for="o15">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o16" class="custom-control-input" value="Absent" th:field="*{i}"><label class="custom-control-label" for="o16">Absent</label></div></td>
+						<td th:case="'10'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o17" class="custom-control-input" value="Present" th:field="*{j}"><label class="custom-control-label" for="o17">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o18" class="custom-control-input" value="Absent" th:field="*{j}"><label class="custom-control-label" for="o18">Absent</label></div></td>
+						<td th:case="'11'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o19" class="custom-control-input" value="Present" th:field="*{k}"><label class="custom-control-label" for="o19">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o20" class="custom-control-input" value="Absent" th:field="*{k}"><label class="custom-control-label" for="o20">Absent</label></div></td>
+						<td th:case="'12'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o21" class="custom-control-input" value="Present" th:field="*{l}"><label class="custom-control-label" for="o21">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o22" class="custom-control-input" value="Absent" th:field="*{l}"><label class="custom-control-label" for="o22">Absent</label></div></td>
+						<td th:case="'13'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o23" class="custom-control-input" value="Present" th:field="*{m}"><label class="custom-control-label" for="o23">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o24" class="custom-control-input" value="Absent" th:field="*{m}"><label class="custom-control-label" for="o24">Absent</label></div></td>
+						<td th:case="'14'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o25" class="custom-control-input" value="Present" th:field="*{n}"><label class="custom-control-label" for="o25">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o26" class="custom-control-input" value="Absent" th:field="*{n}"><label class="custom-control-label" for="o26">Absent</label></div></td>
+						<td th:case="'15'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o27" class="custom-control-input" value="Present" th:field="*{o}"><label class="custom-control-label" for="o27">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o28" class="custom-control-input" value="Absent" th:field="*{o}"><label class="custom-control-label" for="o28">Absent</label></div></td>
+						<td th:case="'16'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o29" class="custom-control-input" value="Present" th:field="*{p}"><label class="custom-control-label" for="o29">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o30" class="custom-control-input" value="Absent" th:field="*{p}"><label class="custom-control-label" for="o30">Absent</label></div></td>
+						<td th:case="'17'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o31" class="custom-control-input" value="Present" th:field="*{q}"><label class="custom-control-label" for="o31">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o32" class="custom-control-input" value="Absent" th:field="*{q}"><label class="custom-control-label" for="32">Absent</label></div></td>
+						<td th:case="'18'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o33" class="custom-control-input" value="Present" th:field="*{r}"><label class="custom-control-label" for="o33">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o34" class="custom-control-input" value="Absent" th:field="*{r}"><label class="custom-control-label" for="o34">Absent</label></div></td>
+						<td th:case="'19'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o35" class="custom-control-input" value="Present" th:field="*{s}"><label class="custom-control-label" for="o35">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o36" class="custom-control-input" value="Absent" th:field="*{s}"><label class="custom-control-label" for="o36">Absent</label></div></td>
+						<td th:case="'20'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o37" class="custom-control-input" value="Present" th:field="*{t}"><label class="custom-control-label" for="o37">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o38" class="custom-control-input" value="Absent" th:field="*{t}"><label class="custom-control-label" for="o38">Absent</label></div></td>
+						<td th:case="'21'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o39" class="custom-control-input" value="Present" th:field="*{u}"><label class="custom-control-label" for="o39">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o40" class="custom-control-input" value="Absent" th:field="*{u}"><label class="custom-control-label" for="o40">Absent</label></div></td>
+						<td th:case="'22'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o41" class="custom-control-input" value="Present" th:field="*{v}"><label class="custom-control-label" for="o41">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o42" class="custom-control-input" value="Absent" th:field="*{v}"><label class="custom-control-label" for="o42">Absent</label></div></td>
+						<td th:case="'23'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o43" class="custom-control-input" value="Present" th:field="*{w}"><label class="custom-control-label" for="o43">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o44" class="custom-control-input" value="Absent" th:field="*{w}"><label class="custom-control-label" for="o44">Absent</label></div></td>
+						<td th:case="'24'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o45" class="custom-control-input" value="Present" th:field="*{x}"><label class="custom-control-label" for="o45">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o46" class="custom-control-input" value="Absent" th:field="*{x}"><label class="custom-control-label" for="o46">Absent</label></div></td>
+						<td th:case="'25'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o47" class="custom-control-input" value="Present" th:field="*{y}"><label class="custom-control-label" for="o47">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o48" class="custom-control-input" value="Absent" th:field="*{y}"><label class="custom-control-label" for="o48">Absent</label></div></td>
+						<td th:case="'26'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o49" class="custom-control-input" value="Present" th:field="*{z}"><label class="custom-control-label" for="o49">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o50" class="custom-control-input" value="Absent" th:field="*{z}"><label class="custom-control-label" for="o50">Absent</label></div></td>
+						<td th:case="'27'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o51" class="custom-control-input" value="Present" th:field="*{a1}"><label class="custom-control-label" for="o51">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o52" class="custom-control-input" value="Absent" th:field="*{a1}"><label class="custom-control-label" for="o52">Absent</label></div></td>
+						<td th:case="'28'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o53" class="custom-control-input" value="Present" th:field="*{a2}"><label class="custom-control-label" for="o53">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o54" class="custom-control-input" value="Absent" th:field="*{a2}"><label class="custom-control-label" for="o54">Absent</label></div></td>
+						<td th:case="'29'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o55" class="custom-control-input" value="Present" th:field="*{a3}"><label class="custom-control-label" for="o55">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o56" class="custom-control-input" value="Absent" th:field="*{a3}"><label class="custom-control-label" for="o56">Absent</label></div></td>
+						<td th:case="'30'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o57" class="custom-control-input" value="Present" th:field="*{a4}"><label class="custom-control-label" for="o57">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o58" class="custom-control-input" value="Absent" th:field="*{a4}"><label class="custom-control-label" for="o58">Absent</label></div></td>
+						<td th:case="'31'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o59" class="custom-control-input" value="Present" th:field="*{a5}"><label class="custom-control-label" for="o59">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o60" class="custom-control-input" value="Absent" th:field="*{a5}"><label class="custom-control-label" for="o60">Absent</label></div></td>
+						<td th:case="'32'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o61" class="custom-control-input" value="Present" th:field="*{a6}"><label class="custom-control-label" for="o61">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o62" class="custom-control-input" value="Absent" th:field="*{a6}"><label class="custom-control-label" for="o62">Absent</label></div></td>
+						<td th:case="'33'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o63" class="custom-control-input" value="Present" th:field="*{a7}"><label class="custom-control-label" for="o63">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o64" class="custom-control-input" value="Absent" th:field="*{a7}"><label class="custom-control-label" for="o64">Absent</label></div></td>
+						<td th:case="'34'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o65" class="custom-control-input" value="Present" th:field="*{a8}"><label class="custom-control-label" for="o65">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o66" class="custom-control-input" value="Absent" th:field="*{a8}"><label class="custom-control-label" for="o66">Absent</label></div></td>
+						<td th:case="'35'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o67" class="custom-control-input" value="Present" th:field="*{a9}"><label class="custom-control-label" for="o67">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o68" class="custom-control-input" value="Absent" th:field="*{a9}"><label class="custom-control-label" for="o68">Absent</label></div></td>
+						<td th:case="'36'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o69" class="custom-control-input" value="Present" th:field="*{a10}"><label class="custom-control-label" for="o69">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o70" class="custom-control-input" value="Absent" th:field="*{a10}"><label class="custom-control-label" for="o70">Absent</label></div></td>
+						<td th:case="'37'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o71" class="custom-control-input" value="Present" th:field="*{a11}"><label class="custom-control-label" for="o71">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o72" class="custom-control-input" value="Absent" th:field="*{a11}"><label class="custom-control-label" for="o72">Absent</label></div></td>
+						<td th:case="'38'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o73" class="custom-control-input" value="Present" th:field="*{a12}"><label class="custom-control-label" for="o73">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o74" class="custom-control-input" value="Absent" th:field="*{a12}"><label class="custom-control-label" for="o74">Absent</label></div></td>
+						<td th:case="'39'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o75" class="custom-control-input" value="Present" th:field="*{a13}"><label class="custom-control-label" for="o75">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o76" class="custom-control-input" value="Absent" th:field="*{a13}"><label class="custom-control-label" for="o76">Absent</label></div></td>
+						<td th:case="'40'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o77" class="custom-control-input" value="Present" th:field="*{a14}"><label class="custom-control-label" for="o77">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o78" class="custom-control-input" value="Absent" th:field="*{a14}"><label class="custom-control-label" for="o78">Absent</label></div></td>
+						<td th:case="'41'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o79" class="custom-control-input" value="Present" th:field="*{a15}"><label class="custom-control-label" for="o79">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o80" class="custom-control-input" value="Absent" th:field="*{a15}"><label class="custom-control-label" for="o80">Absent</label></div></td>
+						<td th:case="'42'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o81" class="custom-control-input" value="Present" th:field="*{a16}"><label class="custom-control-label" for="o81">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o82" class="custom-control-input" value="Absent" th:field="*{a16}"><label class="custom-control-label" for="o82">Absent</label></div></td>
+						<td th:case="'43'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o83" class="custom-control-input" value="Present" th:field="*{a17}"><label class="custom-control-label" for="o83">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o84" class="custom-control-input" value="Absent" th:field="*{a17}"><label class="custom-control-label" for="o84">Absent</label></div></td>
+						<td th:case="'44'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o85" class="custom-control-input" value="Present" th:field="*{a18}"><label class="custom-control-label" for="o85">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o86" class="custom-control-input" value="Absent" th:field="*{a18}"><label class="custom-control-label" for="o86">Absent</label></div></td>
+						<td th:case="'45'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o87" class="custom-control-input" value="Present" th:field="*{a19}"><label class="custom-control-label" for="o87">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o88" class="custom-control-input" value="Absent" th:field="*{a19}"><label class="custom-control-label" for="o88">Absent</label></div></td>
+						<td th:case="'46'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o89" class="custom-control-input" value="Present" th:field="*{a20}"><label class="custom-control-label" for="o89">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o90" class="custom-control-input" value="Absent" th:field="*{a20}"><label class="custom-control-label" for="o90">Absent</label></div></td>
+						<td th:case="'47'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o91" class="custom-control-input" value="Present" th:field="*{a21}"><label class="custom-control-label" for="o91">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o92" class="custom-control-input" value="Absent" th:field="*{a21}"><label class="custom-control-label" for="o92">Absent</label></div></td>
+						<td th:case="'48'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o93" class="custom-control-input" value="Present" th:field="*{a22}"><label class="custom-control-label" for="o93">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o94" class="custom-control-input" value="Absent" th:field="*{a22}"><label class="custom-control-label" for="o94">Absent</label></div></td>
+						<td th:case="'49'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o95" class="custom-control-input" value="Present" th:field="*{a23}"><label class="custom-control-label" for="o95">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o96" class="custom-control-input" value="Absent" th:field="*{a23}"><label class="custom-control-label" for="o96">Absent</label></div></td>
+						<td th:case="'50'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o97" class="custom-control-input" value="Present" th:field="*{a24}"><label class="custom-control-label" for="o97">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o98" class="custom-control-input" value="Absent" th:field="*{a24}"><label class="custom-control-label" for="o98">Absent</label></div></td>
+						<td th:case="'51'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o99" class="custom-control-input" value="Present" th:field="*{a25}"><label class="custom-control-label" for="o99">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="o100" class="custom-control-input" value="Absent" th:field="*{a25}"><label class="custom-control-label" for="o100">Absent</label></div></td>
+						<td th:case="'52'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="i1" class="custom-control-input" value="Present" th:field="*{a26}"><label class="custom-control-label" for="i1">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="i2" class="custom-control-input" value="Absent" th:field="*{a26}"><label class="custom-control-label" for="i2">Absent</label></div></td>
+						<td th:case="'53'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="i3" class="custom-control-input" value="Present" th:field="*{a27}"><label class="custom-control-label" for="i3">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="i4" class="custom-control-input" value="Absent" th:field="*{a27}"><label class="custom-control-label" for="i4">Absent</label></div></td>
+						<td th:case="'54'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="i5" class="custom-control-input" value="Present" th:field="*{a28}"><label class="custom-control-label" for="i5">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="i6" class="custom-control-input" value="Absent" th:field="*{a28}"><label class="custom-control-label" for="i6">Absent</label></div></td>
+						<td th:case="'55'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="i7" class="custom-control-input" value="Present" th:field="*{a29}"><label class="custom-control-label" for="i7">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="i8" class="custom-control-input" value="Absent" th:field="*{a29}"><label class="custom-control-label" for="i8">Absent</label></div></td>
+						<td th:case="'56'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="i9" class="custom-control-input" value="Present" th:field="*{a30}"><label class="custom-control-label" for="i9">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="i10" class="custom-control-input" value="Absent" th:field="*{a30}"><label class="custom-control-label" for="i10">Absent</label></div></td>
+						<td th:case="'57'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="i11" class="custom-control-input" value="Present" th:field="*{a31}"><label class="custom-control-label" for="i11">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="i12" class="custom-control-input" value="Absent" th:field="*{a31}"><label class="custom-control-label" for="i12">Absent</label></div></td>
+						<td th:case="'58'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="i13" class="custom-control-input" value="Present" th:field="*{a32}"><label class="custom-control-label" for="i13">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="i14" class="custom-control-input" value="Absent" th:field="*{a32}"><label class="custom-control-label" for="i14">Absent</label></div></td>
+						<td th:case="'59'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="i15" class="custom-control-input" value="Present" th:field="*{a33}"><label class="custom-control-label" for="i15">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="i16" class="custom-control-input" value="Absent" th:field="*{a33}"><label class="custom-control-label" for="i16">Absent</label></div></td>
+						<td th:case="'60'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="i17" class="custom-control-input" value="Present" th:field="*{a34}"><label class="custom-control-label" for="i17">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="i18" class="custom-control-input" value="Absent" th:field="*{a34}"><label class="custom-control-label" for="i18">Absent</label></div></td>
+						<td th:case="'61'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="i19" class="custom-control-input" value="Present" th:field="*{a35}"><label class="custom-control-label" for="i19">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="i20" class="custom-control-input" value="Absent" th:field="*{a35}"><label class="custom-control-label" for="i20">Absent</label></div></td>
+						<td th:case="'62'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="i21" class="custom-control-input" value="Present" th:field="*{a36}"><label class="custom-control-label" for="i21">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="i22" class="custom-control-input" value="Absent" th:field="*{a36}"><label class="custom-control-label" for="i22">Absent</label></div></td>
+						<td th:case="'63'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="i23" class="custom-control-input" value="Present" th:field="*{a37}"><label class="custom-control-label" for="i23">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="i24" class="custom-control-input" value="Absent" th:field="*{a37}"><label class="custom-control-label" for="i24">Absent</label></div>td>
+						<td th:case="'64'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="i25" class="custom-control-input" value="Present" th:field="*{a38}"><label class="custom-control-label" for="i25">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="i26" class="custom-control-input" value="Absent" th:field="*{a38}"><label class="custom-control-label" for="i26">Absent</label></div></td>
+						<td th:case="'65'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="i27" class="custom-control-input" value="Present" th:field="*{a39}"><label class="custom-control-label" for="i27">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="i28" class="custom-control-input" value="Absent" th:field="*{a39}"><label class="custom-control-label" for="i28">Absent</label></div></td>
+						<td th:case="'66'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="i29" class="custom-control-input" value="Present" th:field="*{a40}"><label class="custom-control-label" for="i29">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="i30" class="custom-control-input" value="Absent" th:field="*{a40}"><label class="custom-control-label" for="i30">Absent</label></div></td>
+						<td th:case="'67'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="i31" class="custom-control-input" value="Present" th:field="*{a41}"><label class="custom-control-label" for="i31">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="i32" class="custom-control-input" value="Absent" th:field="*{a41}"><label class="custom-control-label" for="i32">Absent</label></div></td>
+						<td th:case="'68'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="i33" class="custom-control-input" value="Present" th:field="*{a42}"><label class="custom-control-label" for="i33">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="i34" class="custom-control-input" value="Absent" th:field="*{a42}"><label class="custom-control-label" for="i34">Absent</label></div></td>
+						<td th:case="'69'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="i35" class="custom-control-input" value="Present" th:field="*{a43}"><label class="custom-control-label" for="i35">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="i36" class="custom-control-input" value="Absent" th:field="*{a43}"><label class="custom-control-label" for="i36">Absent</label></div></td>
+						<td th:case="'70'"><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="i37" class="custom-control-input" value="Present" th:field="*{a44}"><label class="custom-control-label" for="i37">Present</label></div><div class="custom-control custom-radio custom-control-inline">
+								<input type="radio" id="i38" class="custom-control-input" value="Absent" th:field="*{a44}"><label class="custom-control-label" for="i38">Absent</label></div></td>
+					</th:block>
+				</tr>
+		</table>
+					<div class="box-footer" style="margin:auto;">
+							<input type="submit" class="btn btn-outline-primary" value="SUBMIT"/>
+						</div><br>
+		
+		</form>
+	</div>
+	</div>
+	</div>
+</body>
+</html>

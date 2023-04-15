@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th= "http://www.thymeLeaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<title>Student Management System</title>
+<style>
+	.grids {
+		display: grid;
+		align-content: centre;
+		margin-top: 10%;
+	}
+</style>
+</head>
+<body class="grids"  th:each = "student:${student}">
+<div>
+	<form enctype="multipart/form-data" th:action="@{/addimage}" method="POST">
+		<label for="formFileDisabled" class="form-label">Image: </label> <input class="form-control"type="file" name="fileimage" accept="image/png, image/jpeg"
+								 id="formFileDisabled">
+		<input type="submit">					
+	</form>
+
+</div>
+<div>
+	<form th:action="@{/change}">
+		<input type="text" name="uname">
+		<input type="password" name="oldpass">
+		<input type="password" name="newpass">
+		<input type="submit">
+	</form>
+</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg- col-md-6 col-sm-6 container justify-content-center card">
+			<div>
+			<table class="table text-center table table-striped table-bordered">
+			<thead class="table-white">
+			<tr>
+				<td><img alt="" th:src="*{'data:image/jpeg;base64,'+{student.image}}" style="width: 100px;height: 100px;"></td>
+			</tr>
+				<tr>
+					<td>Roll Number</td>
+					<td th:text = "${student.roll}"></td>
+				</tr>
+				<tr>
+					<td>Student First Name</td>
+					<td th:text = "${student.firstName}"></td>
+				</tr>
+				<tr>
+					<td>Student Last Name</td>
+					<td th:text = "${student.lastName}"></td>
+				</tr>
+				<tr>
+					<td>Student Email</td>
+					<td th:text = "${student.email}"></td>
+				</tr>
+				<tr>
+					<td>Date of Birth</td>
+					<td th:text = "${student.dob}"></td>
+				</tr>
+				<tr>
+					<td>Phone</td>
+					<td th:text = "${student.phone}"></td>
+				</tr>
+				<tr>
+					<td>Year</td>
+					<td th:text = "${student.year}"></td>
+				</tr>
+			</thead>
+		</table>	
+		</div>
+		</div>
+		</div>
+	</div>
+</body>
+</html>

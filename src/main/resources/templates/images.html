@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<form enctype="multipart/form-data" th:action="@{/image/save}" th:object="${image}" method="post">
+		<p>
+			<label>Id: </label> <input type="text" th:field="*{id}">
+		</p>
+		<p>
+			<label>Name: </label> <input type="text" th:field="*{name}">
+		</p>
+		<p>
+			<label>logo: </label> <input class="custom-file-input" type="file" name="fileimage" accept="image/png, image/jpeg"
+				 id="fileimage">
+		</p>
+		<input type="submit" value="submit">
+	</form>
+	<script src="js/jquery-3.1.1.min.js"></script>
+	<script src="js/bootstrap.js"></script>
+</body>
+</html>

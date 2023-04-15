@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th= "http://www.thymeLeaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Student Management System</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+	.box{
+		padding:10px;
+		margin:auto;
+		
+	}
+</style>
+</head>
+<body>
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#">Student Management Systems</a>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/student2}">Student Management</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/list}">Home</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+	
+	<div class="container">
+		<div class="row">
+			<h1> Second Year Time Table</h1>
+			<div class="box">
+			
+			</div>
+		</div>
+		<div class="row">
+		</div>
+		
+		<table class="table table table-striped table-bordered">
+			<thead class="table-dark">
+				<tr>
+					<th>HOUR</th>
+					<th>START TIME</th>
+					<th>END TIME</th>
+				</tr>
+			</thead>
+			<thead>
+				<tr >
+				<td><form action="/form/submit" method="post"><input type="time" name="time"
+							value="22:00" />
+						<input type="time" name="time2" value="22:00" /> <input type="submit"
+							value="button"></form></td>
+				<!-- 	<td th:text = "${table.days}"></td>
+					<td th:text = "${table.hour1}"></td>
+					<td th:text = "${table.hour2}"></td>
+					<td th:text = "${table.hour3}"></td>
+					<td th:text = "${table.hour4}"></td>
+					<td th:text = "${table.hour5}"></td>
+					<td th:text = "${table.hour6}"></td>
+					<td th:text = "${table.hour7}"></td>
+					<td><a class="btn btn-primary" th:href="@{/newday/{id}(id=${table.id})}">
+							ADD/UPDATE SUBJECTS</a></td> -->
+				</tr>
+			</thead>
+			
+		</table>
+	</div>
+</body>
+</html>

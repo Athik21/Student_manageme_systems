@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th= "http://www.thymeLeaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Student Management System</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style> 
+ .gradient-custom {
+    /* fallback for old browsers */
+    background: #30cfd0;
+  
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(48,207,208,0.5), rgba(51,8,103,0.5));
+  
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(48,207,208,0.5), rgba(51,8,103,0.5))
+  }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body class="gradient-custom">
+<nav  class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
+  <div  class="container">
+    <a class="navbar-brand" href="#">Student Management Systems</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ms-auto">
+		<li class="nav-item">
+			<a class="nav-link"  onclick="history.go(-3)">Back</a>
+		</li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container">
+	<div class="row">
+		<div class="col-lg- col-md-6 col-sm-6 container justify-content-center card">
+		
+		<div th:switch="${session.year}" class="text-center">
+			<h3 th:case="'2'"> Second Year Students</h3>
+			<h3 th:case="'3'"> Third Year Students</h3>
+			<h3 th:case="'4'"> Final Year Students</h3>
+		</div>
+		<table class="table table table-striped table-bordered text-center">
+			<thead class="bg-dark" style="color:white;font-weight:bold;">
+				<tr>
+					<th>Roll Number</th>
+					<th>Attendance Percentage</th>
+				</tr>
+			</thead>
+				<tr th:each = "student: ${stu}" style="font-weight:bold;" class="table-success text-center">
+					<td th:text = "${student.roll}"></td>
+					<td th:if="${student.id!=null} and ${student.id==1}" th:text = "(${session.stu1[0]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==2}" th:text = "(${session.stu1[1]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==3}" th:text = "(${session.stu1[2]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==4}" th:text = "(${session.stu1[3]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==5}" th:text = "(${session.stu1[4]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==6}" th:text = "(${session.stu1[5]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==7}" th:text = "(${session.stu1[6]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==8}" th:text = "(${session.stu1[7]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==9}" th:text = "(${session.stu1[8]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==11}" th:text = "(${session.stu1[10]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==12}" th:text = "(${session.stu1[11]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==13}" th:text = "(${session.stu1[12]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==14}" th:text = "(${session.stu1[13]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==15}" th:text = "(${session.stu1[14]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==16}" th:text = "(${session.stu1[15]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==17}" th:text = "(${session.stu1[16]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==18}" th:text = "(${session.stu1[17]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==19}" th:text = "(${session.stu1[18]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==20}" th:text = "(${session.stu1[19]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==21}" th:text = "(${session.stu1[20]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==22}" th:text = "(${session.stu1[21]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==23}" th:text = "(${session.stu1[22]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==24}" th:text = "(${session.stu1[23]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==25}" th:text = "(${session.stu1[24]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==26}" th:text = "(${session.stu1[25]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==27}" th:text = "(${session.stu1[26]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==28}" th:text = "(${session.stu1[27]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==29}" th:text = "(${session.stu1[28]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==30}" th:text = "(${session.stu1[29]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==31}" th:text = "(${session.stu1[30]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==32}" th:text = "(${session.stu1[31]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==33}" th:text = "(${session.stu1[32]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==34}" th:text = "(${session.stu1[33]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==35}" th:text = "(${session.stu1[34]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==36}" th:text = "(${session.stu1[35]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==37}" th:text = "(${session.stu1[36]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==38}" th:text = "(${session.stu1[37]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==39}" th:text = "(${session.stu1[38]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==40}" th:text = "(${session.stu1[39]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==41}" th:text = "(${session.stu1[40]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==42}" th:text = "(${session.stu1[41]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==43}" th:text = "(${session.stu1[42]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==44}" th:text = "(${session.stu1[43]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==45}" th:text = "(${session.stu1[44]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==46}" th:text = "(${session.stu1[45]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==47}" th:text = "(${session.stu1[47]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==48}" th:text = "(${session.stu1[48]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==49}" th:text = "(${session.stu1[49]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==50}" th:text = "(${session.stu1[50]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==51}" th:text = "(${session.stu1[51]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==52}" th:text = "(${session.stu1[52]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==53}" th:text = "(${session.stu1[53]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==54}" th:text = "(${session.stu1[54]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==55}" th:text = "(${session.stu1[55]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==56}" th:text = "(${session.stu1[56]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==57}" th:text = "(${session.stu1[57]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==58}" th:text = "(${session.stu1[57]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==59}" th:text = "(${session.stu1[59]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==60}" th:text = "(${session.stu1[60]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==61}" th:text = "(${session.stu1[61]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==62}" th:text = "(${session.stu1[62]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==63}" th:text = "(${session.stu1[63]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==64}" th:text = "(${session.stu1[64]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==65}" th:text = "(${session.stu1[65]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==66}" th:text = "(${session.stu1[66]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==67}" th:text = "(${session.stu1[67]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==68}" th:text = "(${session.stu1[68]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==69}" th:text = "(${session.stu1[69]}/${session.total})*100+'%'"></td>
+					<td th:if="${student.id!=null} and ${student.id==70}" th:text = "(${session.stu1[70]}/${session.total})*100+'%'"></td>
+				</tr>
+			</table>
+	</div>
+	</div>
+	</div>
+</body>
+</html>

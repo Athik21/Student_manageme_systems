@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Student Management System</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style> 
+ .gradient-custom {
+    /* fallback for old browsers */
+    background: #30cfd0;
+  
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(48,207,208,0.5), rgba(51,8,103,0.5));
+  
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(48,207,208,0.5), rgba(51,8,103,0.5))
+  }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body class="gradient-custom">
+<nav  class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
+  <div  class="container">
+    <a class="navbar-brand" href="#">Student Management Systems</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ms-auto">
+		<li class="nav-item">
+			<a class="nav-link"  th:href="@{/}">logout</a>
+		</li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container">
+	<div class="row">
+		<div class="col-lg- col-md-6 col-sm-6 container justify-content-center">
+		
+	<table class="table table table-striped table-bordered text-center">
+			<thead class="bg-dark" style="color:white;font-weight:bold;">
+				<tr>
+					<th>ROLL NUMBER: </th>
+					<th>INFO...</th>
+				</tr>
+			</thead>
+			<thead th:each = "spec: ${spec}" style="font-weight:bold;" class="table-success text-center">
+				<th:block th:switch="${stu.id}"><tr th:if="${spec.a!=null}">
+					<td th:text = "${stu[0].roll}"></td>
+					<td th:text = "${spec.a}"></td>
+				</tr>
+				<tr th:if="${spec.b!=null}">
+					<td th:text = "${stu[1].roll}"></td>
+					<td th:text = "${spec.b}"></td>
+				</tr>
+				<tr th:if="${spec.c!=null}">
+				<td th:text = "${stu[2].roll}"></td>
+					<td th:text = "${spec.c}"></td>
+				</tr>
+				<tr th:if="${spec.d!=null}">
+				<td th:text = "${stu[3].roll}"></td>
+					<td th:text = "${spec.d}"></td>
+				</tr>
+				<tr th:if="${spec.e!=null}">
+				<td th:text = "${stu[4].roll}"></td>
+					<td th:text = "${spec.e}"></td>
+				</tr>
+				<tr th:if="${spec.f!=null}">
+				<td th:text = "${stu[5].roll}"></td>
+					<td th:text = "${spec.f}"></td>
+				</tr>
+				<tr th:if="${spec.g!=null}">
+				<td th:text = "${stu[6].roll}"></td>
+					<td th:text = "${spec.g}"></td>
+				</tr>
+				<tr th:if="${spec.h!=null}">
+				<td th:text = "${stu[7].roll}"></td>
+					<td th:text = "${spec.h}"></td>
+				</tr>
+				<tr th:if="${spec.i!=null}">
+				<td th:text = "${stu[8].roll}"></td>
+					<td th:text = "${spec.i}"></td>
+				</tr>
+				<tr th:if="${spec.j!=null}">
+				<td th:text = "${stu[9].roll}"></td>
+					<td th:text = "${spec.j}"></td>
+				</tr>
+				<tr th:if="${spec.k!=null}">
+				<td th:text = "${stu[10].roll}"></td>
+					<td th:text = "${spec.k}"></td>
+				</tr>
+				<tr th:if="${spec.l!=null}">
+				<td th:text = "${stu[11].roll}"></td>
+					<td th:text = "${spec.l}"></td>
+				</tr>
+				<tr th:if="${spec.m!=null}">
+				<td th:text = "${stu[12].roll}"></td>
+					<td th:text = "${spec.m}"></td>
+				</tr>
+				<tr th:if="${spec.n!=null}">
+				<td th:text = "${stu[13].roll}"></td>
+					<td th:text = "${spec.n}"></td>
+				</tr>
+				<tr th:if="${spec.o!=null}">
+				<td th:text = "${stu[14].roll}"></td>
+					<td th:text = "${spec.o}"></td>
+				</tr>
+				<tr th:if="${spec.p!=null}">
+				<td th:text = "${stu[15].roll}"></td>
+					<td th:text = "${spec.p}"></td>
+				</tr>
+				<tr th:if="${spec.q!=null}">
+				<td th:text = "${stu[16].roll}"></td>
+					<td th:text = "${spec.q}"></td>
+				</tr>
+				<tr th:if="${spec.r!=null}">
+				<td th:text = "${stu[17].roll}"></td>
+					<td th:text = "${spec.r}"></td>
+				</tr>
+				<tr th:if="${spec.s!=null}">
+				<td th:text = "${stu[18].roll}"></td>
+					<td th:text = "${spec.s}"></td>
+				</tr>
+				<tr th:if="${spec.t!=null}">
+				<td th:text = "${stu[19].roll}"></td>
+					<td th:text = "${spec.t}"></td>
+				</tr>
+				<tr th:if="${spec.u!=null}">
+				<td th:text = "${stu[20].roll}"></td>
+					<td th:text = "${spec.u}"></td>
+				</tr>
+				<tr th:if="${spec.v!=null}">
+				<td th:text = "${stu[21].roll}"></td>
+					<td th:text = "${spec.v}"></td>
+				</tr>
+				<tr th:if="${spec.w!=null}">
+				<td th:text = "${stu[22].roll}"></td>
+					<td th:text = "${spec.w}"></td>
+				</tr>
+				<tr th:if="${spec.x!=null}">
+				<td th:text = "${stu[23].roll}"></td>
+					<td th:text = "${spec.x}"></td>
+				</tr>
+				<tr th:if="${spec.y!=null}">
+				<td th:text = "${stu[24].roll}"></td>
+					<td th:text = "${spec.y}"></td>
+				</tr>
+				<tr th:if="${spec.z!=null}">
+				<td th:text = "${stu[25].roll}"></td>
+					<td th:text = "${spec.z}"></td>
+				</tr>
+				<tr th:if="${spec.a1!=null}">
+				<td th:text = "${stu[26].roll}"></td>
+					<td th:text = "${spec.a1}"></td>
+				</tr>
+				<tr th:if="${spec.a2!=null}">
+				<td th:text = "${stu[27].roll}"></td>
+					<td th:text = "${spec.a2}"></td>
+				</tr>
+				<tr th:if="${spec.a3!=null}">
+					<td th:text = "${stu[28].roll}"></td>
+					<td th:text = "${spec.a3}"></td>
+				</tr>
+				<tr th:if="${spec.a4!=null}">
+					<td th:text = "${stu[29].roll}"></td>
+					<td th:text = "${spec.a4}"></td>
+				</tr>
+				<tr th:if="${spec.a5!=null}">
+				<td th:text = "${stu[30].roll}"></td>
+					<td th:text = "${spec.a5}"></td>
+				</tr>
+				<tr th:if="${spec.a6!=null}">
+				<td th:text = "${stu[31].roll}"></td>
+					<td th:text = "${spec.a6}"></td>
+				</tr>
+				<tr th:if="${spec.a7!=null}">
+				<td th:text = "${stu[32].roll}"></td>
+					<td th:text = "${spec.a7}"></td>
+				</tr>
+				<tr th:if="${spec.a8!=null}">
+				<td th:text = "${stu[33].roll}"></td>
+					<td th:text = "${spec.a8}"></td>
+				</tr>
+				<tr th:if="${spec.a9!=null}">
+				<td th:text = "${stu[34].roll}"></td>
+					<td th:text = "${spec.a9}"></td>
+				</tr>
+				<tr th:if="${spec.a10!=null}">
+				<td th:text = "${stu[35].roll}"></td>
+					<td th:text = "${spec.a10}"></td>
+				</tr>
+				<tr th:if="${spec.a11!=null}">
+				<td th:text = "${stu[36].roll}"></td>
+					<td th:text = "${spec.a11}"></td>
+				</tr>
+				<tr th:if="${spec.a12!=null}">
+				<td th:text = "${stu[37].roll}"></td>
+					<td th:text = "${spec.a12}"></td>
+				</tr>
+				<tr th:if="${spec.a13!=null}">
+				<td th:text = "${stu[38].roll}"></td>
+					<td th:text = "${spec.a13}"></td>
+				</tr>
+				<tr th:if="${spec.a14!=null}">
+				<td th:text = "${stu[39].roll}"></td>
+					<td th:text = "${spec.a14}"></td>
+				</tr>
+				<tr th:if="${spec.a15!=null}">
+				<td th:text = "${stu[40].roll}"></td>
+					<td th:text = "${spec.a15}"></td>
+				</tr>
+				<tr th:if="${spec.a16!=null}">
+				<td th:text = "${stu[41].roll}"></td>
+					<td th:text = "${spec.a16}"></td>
+				</tr>
+				<tr th:if="${spec.a17!=null}">
+				<td th:text = "${stu[42].roll}"></td>
+					<td th:text = "${spec.a17}"></td>
+				</tr>
+				<tr th:if="${spec.a18!=null}">
+				<td th:text = "${stu[43].roll}"></td>
+					<td th:text = "${spec.a18}"></td>
+				</tr>
+				<tr th:if="${spec.a19!=null}">
+				<td th:text = "${stu[44].roll}"></td>
+					<td th:text = "${spec.a19}"></td>
+				</tr>
+				<tr th:if="${spec.a20!=null}">
+				<td th:text = "${stu[45].roll}"></td>
+					<td th:text = "${spec.a20}"></td>
+				</tr>
+				<tr th:if="${spec.a21!=null}">
+				<td th:text = "${stu[46].roll}"></td>
+					<td th:text = "${spec.a21}"></td>
+				</tr>
+				<tr th:if="${spec.a22!=null}">
+				<td th:text = "${stu[47].roll}"></td>
+					<td th:text = "${spec.a22}"></td>
+				</tr>
+				<tr th:if="${spec.a23!=null}">
+				<td th:text = "${stu[48].roll}"></td>
+					<td th:text = "${spec.a23}"></td>
+				</tr>
+				<tr th:if="${spec.a24!=null}">
+				<td th:text = "${stu[49].roll}"></td>
+					<td th:text = "${spec.a24}"></td>
+				</tr>
+				<tr th:if="${spec.a25!=null}">
+				<td th:text = "${stu[50].roll}"></td>
+					<td th:text = "${spec.a25}"></td>
+				</tr>
+				<tr th:if="${spec.a26!=null}">
+				<td th:text = "${stu[51].roll}"></td>
+					<td th:text = "${spec.a26}"></td>
+				</tr>
+				<tr th:if="${spec.a27!=null}">
+				<td th:text = "${stu[52].roll}"></td>
+					<td th:text = "${spec.a27}"></td>
+				</tr>
+				<tr th:if="${spec.a28!=null}">
+				<td th:text = "${stu[53].roll}"></td>
+					<td th:text = "${spec.a28}"></td>
+				</tr>
+				<tr th:if="${spec.a29!=null}">
+				<td th:text = "${stu[54].roll}"></td>
+					<td th:text = "${spec.a29}"></td>
+				</tr>
+				<tr th:if="${spec.a30!=null}">
+				<td th:text = "${stu[55].roll}"></td>
+					<td th:text = "${spec.a30}"></td>
+				</tr>
+				<tr th:if="${spec.a31!=null}">
+				<td th:text = "${stu[56].roll}"></td>
+					<td th:text = "${spec.a31}"></td>
+				</tr>
+				<tr th:if="${spec.a32!=null}">
+				<td th:text = "${stu[57].roll}"></td>
+					<td th:text = "${spec.a32}"></td>
+				</tr>
+				<tr th:if="${spec.a33!=null}">
+				<td th:text = "${stu[58].roll}"></td>
+					<td th:text = "${spec.a33}"></td>
+				</tr>
+				<tr th:if="${spec.a34!=null}">
+				<td th:text = "${stu[59].roll}"></td>
+					<td th:text = "${spec.a34}"></td>
+				</tr>
+				<tr th:if="${spec.a35!=null}">
+				<td th:text = "${stu[60].roll}"></td>
+					<td th:text = "${spec.a35}"></td>
+				</tr>
+				<tr th:if="${spec.a36!=null}">
+				<td th:text = "${stu[61].roll}"></td>
+					<td th:text = "${spec.a36}"></td>
+				</tr>
+				
+				<tr th:if="${spec.a38!=null}">
+				<td th:text = "${stu[63].roll}"></td>
+					<td th:text = "${spec.a38}"></td>
+				</tr>
+				<tr th:if="${spec.a39!=null}">
+				<td th:text = "${stu[64].roll}"></td>
+					<td th:text = "${spec.a39}"></td>
+				</tr>
+				<tr th:if="${spec.a40!=null}">
+				<td th:text = "${stu[65].roll}"></td>
+					<td th:text = "${spec.a40}"></td>
+				</tr>
+				<tr th:if="${spec.a41!=null}">
+				<td th:text = "${stu[66].roll}"></td>
+					<td th:text = "${spec.a41}"></td>
+				</tr>
+				<tr th:if="${spec.a42!=null}">
+				<td th:text = "${stu[67].roll}"></td>
+					<td th:text = "${spec.a42}"></td>
+				</tr>
+				<tr th:if="${spec.a43!=null}">
+				<td th:text = "${stu[68].roll}"></td>
+					<td th:text = "${spec.43}"></td>
+				</tr>
+				<tr th:if="${spec.a44!=null}">
+				<td th:text = "${stu[69].roll}"></td>
+					<td th:text = "${spec.a44}"></td>
+				</tr>
+				
+			</thead>
+			
+		</table>
+	</div>
+</div>
+</div>
+</body>
+</html>

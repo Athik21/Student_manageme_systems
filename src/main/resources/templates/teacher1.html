@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Student Management System</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+body {
+  background: url('https://almashines.s3.dualstack.ap-southeast-1.amazonaws.com/assets/images/gallary_photos/t1597239902_DkdQssf50L.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
+  <div class="container">
+    <a class="navbar-brand" href="#">Student Management Systems</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ms-auto">
+		<li class="nav-item">
+			<a class="nav-link" th:href="@{/list}" type="submit">Logout</a>
+		</li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+  <div class="card border-0 shadow my-5 bg-light">
+    <div class="card-body p-5">
+      <div class="container ">
+      <h3 class="text-center" style="color:brown;font-weight:bold;">Teacher's TimeTable</h3>
+      	<h5 th:text="'Today\'s Date: '+${session.dates}"></h5>
+		<h5 Style="text-transform:capitalize;" th:text="'Subject: '+${session.subject}"></h5>
+		<div class="table-sm table-responsive table table-hover">
+		<div class="row col-lg-3">
+			<a class="btn btn-outline-dark btn-sm mb-3" style="font-weight:bold;" th:href="@{/stuatt/{sub}(sub=${session.subject+' '+session.yer})}">Attendance Percentage</a>
+			&nbsp;&nbsp;&nbsp;&nbsp;<form th:action="@{/tedet/{uname}(uname=${session.uname}+' '+${session.yer})}" method="post">
+				<input type="submit" class=" btn btn-outline-dark btn-sm mb-3" style="font-weight:bold;"
+						value="Personal info..."/>
+			</form>
+		</div>
+		<table class="table table table-striped table-bordered">
+			<thead class="bg-dark">
+				<tr class="text-white text-center">
+					<th>DAYS</th>
+					<th>HOUR</th>
+					<th>START TIME</th>
+					<th>END TIME</th>
+				</tr>
+			</thead>
+				<tr class="table-success text-center" style="font-weight:bold;">
+					<td>MONDAY</td>
+					<td th:text="${session.mh}"></td>
+					<td  th:text="${session.st1}"></td>
+					<td th:text="${session.et1}"></td>
+				</tr>
+				<tr class="table-success text-center" style="font-weight:bold;">
+					<td>TUESDAY</td>
+					<td th:text="${session.th}"></td>
+					<td  th:text="${session.st2}"></td>
+					<td th:text="${session.et2}"></td>
+				</tr>
+				<tr class="table-success text-center" style="font-weight:bold;">
+					<td>WEDNESDAY</td>
+					<td th:text="${session.wh}"></td>
+					<td  th:text="${session.st3}"></td>
+					<td th:text="${session.et3}"></td>
+				</tr>
+				<tr class="table-success text-center" style="font-weight:bold;">
+					<td>THURSDAY</td>
+					<td th:text="${session.thh}"></td>
+					<td  th:text="${session.st4}"></td>
+					<td th:text="${session.et4}"></td>
+				</tr>
+				<tr class="table-success text-center" style="font-weight:bold;">
+					<td>FRIDAY</td>
+					<td th:text="${session.fh}"></td>
+					<td  th:text="${session.st5}"></td>
+					<td th:text="${session.et5}"></td>
+				</tr>
+		</table>
+		</div>
+		<h3 class="text-center" style="color:brown;font-weight:bold;">Attendance Records</h3>
+		<div class="table-responsive table table-hover" >
+		<div class="row col-lg-3">
+		<a class="btn btn-outline-dark btn-sm mb-3" style="font-weight:bold;" th:href="@{/attpass/{sub}(sub=${session.subject}+' '+${session.yer})}">
+							Mark Attendance</a>
+		&nbsp;&nbsp;<a class="btn btn-outline-dark btn-sm mb-3" style="font-weight:bold;"th:href="@{/exceldetail/{sub}(sub=${session.subject}+' '+${session.yer})}" onclick="alert('This will download the student\'s attendance');">
+							Export Excel File</a></div>
+		<div class="table-sm table-responsive table table-hover">
+		<table class="table table table-striped table-bordered">
+			<thead class="bg-dark">
+				<tr class="text-white text-center">
+					<th>DATE: </th>
+					<th>HOUR: </th>
+					<th>Present & Absent</th>
+					<th>INFO...</th>
+				</tr>
+			</thead>
+			
+				<tr style="font-weight:bold;" th:each = "subject: ${subject}" class="table-success text-center">
+					<td th:text = "${subject.dates}"></td>
+					<td th:text = "${subject.hour}"></td>
+					<td><div><label>Number of Present: </label><th:block th:text="' '+${subject.present}"></div></th:block><label>Number of Absent:</label><th:block th:text="' '+${subject.absent}"></th:block></td>
+					<td><a class="btn btn-primary" th:href="@{/attdets/{date}(date=${subject.dates}+${subject.sub}+' '+${session.yer}+' '+${subject.hour})}">
+							Details</a></td>
+				</tr>
+			
+		</table>
+		</div>
+		</div>
+	</div> 
+    </div>
+  </div>
+</div>
+</body>
+</html>

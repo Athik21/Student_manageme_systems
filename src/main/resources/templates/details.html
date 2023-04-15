@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns:th= "http://www.thymeLeaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<title>Student Management System</title>
+<style>
+	.grids {
+		display: grid;
+		align-content: centre;
+		margin-top: 10%;
+	}
+ .gradient-custom {
+    /* fallback for old browsers */
+    background: #30cfd0;
+  
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(48,207,208,0.5), rgba(51,8,103,0.5));
+  
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(48,207,208,0.5), rgba(51,8,103,0.5))
+  }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body class="gradient-custom">
+<nav  class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
+  <div  class="container">
+    <a class="navbar-brand" href="#">Student Management Systems</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ms-auto">
+		<li class="nav-item">
+			<a class="nav-link"  onclick="history.go(-1)">Back</a>
+		</li>
+      </ul>
+    </div>
+  </div>
+</nav>
+	<div class="container">
+		<div class="card">
+			<div class="card">
+				<h3 class="text-center">Student's Detail</h3>
+				<div style="margin:auto;"><img class="rounded-circle" th:each="student :${student}" alt="" th:src="*{'data:image/jpeg;base64,'+{student.image}}" style="width: 100px;height: 100px;">
+				</div><br>
+				<div th:object = "${student}">
+			<table class="table text-center" style="font-weight:bold;">
+			<thead class="table-white">
+			
+				<tr>
+					<td>Roll Number: </td>
+					<td th:text = "${student.roll}"></td>
+				</tr>
+				<tr>
+					<td>Name: </td>
+					<td th:text = "${student.name}"></td>
+				</tr>
+				<tr>
+					<td>DOB: </td>
+					<td th:text = "${student.dob}"></td>
+				</tr>
+				<tr>
+					<td>Father's Name: </td>
+					<td th:text = "${student.father}"></td>
+				</tr>
+				<tr>
+					<td>Mother's Name: </td>
+					<td th:text = "${student.mother}"></td>
+				</tr>
+				<tr>
+					<td>Parent's Mobile: </td>
+					<td th:text = "${student.par_num}"></td>
+				</tr>
+				<tr>
+					<td>Year: </td>
+					<td th:text = "${student.year}"></td>
+				</tr>
+				<tr>
+					<td>Phone Number: </td>
+					<td th:text = "${student.phone}"></td>
+				</tr>
+				<tr>
+					<td>Email Id: </td>
+					<td th:text = "${student.email}"></td>
+				</tr>
+				<tr>
+					<td>Aadhar ID: </td>
+					<td th:text = "${student.aadhar}"></td>
+				</tr>
+				<tr>
+					<td>Cast: </td>
+					<td th:text = "${student.cast}"></td>
+				</tr>
+				<tr>
+					<td>Regulation: </td>
+					<td th:text = "${student.regulation}"></td>
+				</tr>
+				<tr>
+					<td>Semester: </td>
+					<td th:text = "${student.sem}"></td>
+				</tr>
+				<tr>
+					<td>Address: </td>
+					<td th:text = "${student.address}"></td>
+				</tr>
+				<tr>
+					<td>State: </td>
+					<td th:text = "${student.state}"></td>
+				</tr>
+				<tr>
+					<td>Taluk/City: </td>
+					<td th:text = "${student.taluk}"></td>
+				</tr>
+				<tr>
+					<td>District: </td>
+					<td th:text = "${student.district}"></td>
+				</tr>
+				<tr>
+					<td>Pincode: </td>
+					<td th:text = "${student.pincode}"></td>
+				</tr>
+				<tr>
+					<td>Blood Group: </td>
+					<td th:text = "${student.b_grp}"></td>
+				</tr>
+				<tr>
+					<td>Gender: </td>
+					<td th:text = "${student.gender}"></td>
+				</tr>
+			</thead>
+			<!-- <div th:switch="${student.year}">
+				<a th:case="'2'" class="btn btn-primary" th:href="@{/student2}">
+							Back</a>
+				<a th:case="'3'" class="btn btn-primary" th:href="@{/student3}">
+							Back</a>
+				<a th:case="'4'" class="btn btn-primary" th:href="@{/student4}">
+							Back</a>
+			</div> -->
+		</table>	
+		</div>
+		</div>
+		</div>
+	</div><br>
+</body>
+</html>
